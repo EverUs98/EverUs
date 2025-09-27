@@ -1,0 +1,276 @@
+/* ========= General ========= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  background: #0d0d0d;
+  color: #fff;
+  overflow-x: hidden;
+  min-height: 100vh;
+  text-align: center;
+  padding-top: 60px; /* espacio para menú fijo */
+}
+
+/* ========= Fondo de estrellitas ========= */
+#stars {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #0d0d0d;
+}
+
+/* ========= Navbar fijo arriba ========= */
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0 2rem;
+  background: rgba(0,0,0,0.85);
+  z-index: 1000;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  backdrop-filter: blur(6px);
+}
+
+.nav .logo {
+  font-size: 1.4rem;
+  font-family: "Great Vibes", cursive;
+  color: #fff;
+  text-decoration: none;
+  margin-right: 2rem;
+}
+
+.nav .nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav .nav-links a {
+  color: #ccc;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.nav .nav-links a:hover {
+  color: #ffd700;
+}
+
+/* ========= Hero ========= */
+.hero {
+  height: calc(100vh - 60px); /* ajusta al menú fijo */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.big-phrase h1 {
+  font-size: 3rem;
+  color: #fff;
+  font-family: "Great Vibes", cursive;
+}
+
+.scroll-hint {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #888;
+  animation: bounce 2s infinite;
+}
+
+/* ========= Paneles ========= */
+.panel {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem 1rem;
+}
+
+.card {
+  background: rgba(255,255,255,0.05);
+  padding: 2rem 3rem;
+  border-radius: 15px;
+  max-width: 700px;
+  text-align: center;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: #fff;
+}
+
+.card p {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #ccc;
+}
+
+/* ========= Contador ========= */
+.counter {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.counter div {
+  font-size: 1rem;
+  color: #ccc;
+}
+
+.counter span {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #fff;
+  display: block;
+}
+
+/* ========= Galería ========= */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(180px,1fr));
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.gallery-item {
+  cursor: pointer;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.gallery-item:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
+.gallery img {
+  width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}
+
+/* ========= Botones de Meses ========= */
+.btn-month {
+  display: inline-block;
+  margin: 1rem;
+  padding: 12px 25px;
+  background: #fff;
+  color: #000;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 1rem;
+  transition: 0.3s;
+}
+
+.btn-month:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+/* ========= Modal ========= */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.85);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.modal-content {
+  background: #111;
+  padding: 15px;
+  border-radius: 15px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow: auto;
+  text-align: center;
+  position: relative;
+}
+
+.modal img {
+  max-width: 100%;
+  max-height: 70vh; /* 👈 limita la altura al 70% de la pantalla */
+  border-radius: 10px;
+  object-fit: contain; /* 👈 mantiene proporción de la foto */
+}
+
+.meta {
+  margin-top: 12px;
+  font-size: 0.9rem;
+  color: #ccc;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  background: #ff4d6d;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 4px 10px;
+  transition: background 0.3s;
+}
+
+.close:hover {
+  background: #ff1e4d;
+}
+
+
+/* ========= Footer ========= */
+.footer {
+  padding: 1rem;
+  background: rgba(0,0,0,0.6);
+  font-size: 0.9rem;
+  color: #777;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+/* ========= Animaciones ========= */
+@keyframes bounce {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+/* ========= Responsive ========= */
+@media(max-width:768px){
+  body {
+    padding-top: 60px; /* espacio para menú fijo */
+  }
+  .nav {
+    padding: 0 1rem;
+  }
+  .nav .logo {
+    font-size: 1.2rem;
+  }
+  .nav .nav-links a {
+    font-size: 0.9rem;
+  }
+  .card {
+    padding: 1.5rem 2rem;
+    max-width: 90%;
+  }
+  .big-phrase h1 {
+    font-size: 2rem;
+  }
+}
