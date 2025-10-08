@@ -50,30 +50,24 @@ updateCounter();
 
 // ====== GALERÍA MODAL ======
 const modal = document.getElementById("modal");
-const modalImg = document.getElementById("modal-img");
-const metaPlace = document.getElementById("meta-place");
-const metaDate = document.getElementById("meta-date");
-const metaNote = document.getElementById("meta-note");
-const closeBtn = document.querySelector(".close");
+if(modal){
+  const modalImg = document.getElementById("modal-img");
+  const metaPlace = document.getElementById("meta-place");
+  const metaDate = document.getElementById("meta-date");
+  const metaNote = document.getElementById("meta-note");
+  const closeBtn = document.querySelector(".close");
 
-document.querySelectorAll(".gallery-item").forEach(item=>{
-  item.addEventListener("click",()=>{
-    modal.style.display="flex";
-    modalImg.src=item.dataset.src;
-    metaPlace.textContent=item.dataset.place;
-    metaDate.textContent=item.dataset.date;
-    metaNote.textContent=item.dataset.note;
+  document.querySelectorAll(".gallery-item").forEach(item=>{
+    item.addEventListener("click",()=>{
+      modal.style.display="flex";
+      modalImg.src=item.dataset.src;
+      metaPlace.textContent=item.dataset.place;
+      metaDate.textContent=item.dataset.date;
+      metaNote.textContent=item.dataset.note;
+    });
   });
-});
-closeBtn.addEventListener("click",()=>{modal.style.display="none";});
-
-// ====== BOTÓN MESES ======
-const monthsButtons = document.getElementById("months-buttons");
-const monthBtn = document.createElement("a");
-monthBtn.href = "meses.html";
-monthBtn.textContent = "1er Mes";
-monthBtn.className = "btn-month";
-monthsButtons.appendChild(monthBtn);
+  closeBtn.addEventListener("click",()=>{modal.style.display="none";});
+}
 
 // ====== NAVBAR SMART ======
 let lastScroll = 0;

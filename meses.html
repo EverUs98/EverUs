@@ -7,10 +7,11 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+<div id="stars"></div>
 
   <!-- Navbar fijo -->
   <nav class="nav fixed-menu">
-    <a href="index.html" class="logo">Nosotros ❤️</a>
+    <a href="index.html" class="logo">EverUs ❤️</a>
     <div class="nav-links">
       <a href="index.html#tiempo">Tiempo</a>
       <a href="index.html#galeria">Galería</a>
@@ -21,10 +22,8 @@
 
   <main>
     <section class="panel">
-      <div class="card">
-        <h2>Meses Juntos</h2>
-        <p>Próximamente… 💖</p>
-        <p>Aquí verás nuestros recuerdos mes a mes.</p>
+      <div class="card" id="month-content">
+        <!-- Contenido dinámico según mes -->
       </div>
     </section>
   </main>
@@ -33,5 +32,60 @@
     <p>Hecho con ♥ para ella</p>
   </footer>
 
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const mes = urlParams.get('mes');
+
+    const mesesData = {
+      1: {
+        title: "💌 1er Mes",
+        text: `Primer Mes Juntos ❤️
+Hola mi amor 💖
+Hoy celebramos nuestro primer mes juntos, y no podía dejar de guardar este momento aquí, en nuestro pequeño rincón del mundo digital, donde cada recuerdo nuestro queda para siempre.
+No sabes lo feliz que me haces. Desde tus sonrisas hasta tus miradas, todo contigo es magia 🪄✨
+Siento que aunque solo haya pasado un mes, te conozco desde siempre… pero al mismo tiempo quiero seguir descubriéndote cada día, leer cada palabra tuya, reírme de tus locuras y enamorarme aún más de ti 😍
+Gracias por ser mi persona favorita, por hacer que mi corazón se acelere con solo pensar en ti, y por aguantar mis bromas y mis locuras 😏😂
+Prometo seguir llenando este espacio de recuerdos, de risas, de abrazos virtuales y reales y de momentos que solo nosotros entendemos.
+Te amo más de lo que las palabras pueden decir, y aquí queda guardado para siempre: nuestro primer mes juntos, pero que sea solo el inicio de muchos, muchísimos más 💕
+Te adoro, te admiro, te quiero, y siempre quiero estar contigo… aunque sea para robarte una sonrisa o un beso inesperado 😘💖`,
+        images: [
+          "images/Salida_EverUs-cine.jpg",
+          "images/Concierto-S.jpg"
+        ],
+        pdf: "pdf/Primer_Mes.pdf"
+      },
+      2: {
+        title: "💌 2do Mes",
+        text: "Próximamente...",
+        images: [],
+        pdf: ""
+      },
+      3: {
+        title: "💌 3er Mes",
+        text: "Próximamente...",
+        images: [],
+        pdf: ""
+      }
+    };
+
+    const contentDiv = document.getElementById('month-content');
+
+    if (mesesData[mes]) {
+      const month = mesesData[mes];
+      contentDiv.innerHTML = `
+        <h2>${month.title}</h2>
+        <p>${month.text.replace(/\n/g,"<br>")}</p>
+        <div class="month-images">
+          ${month.images.map(img => `<img src="${img}" alt="Foto del mes" style="width:100%; max-width:400px; margin-bottom:10px;">`).join('')}
+        </div>
+        ${month.pdf ? `<a href="${month.pdf}" download class="btn-month" style="display:inline-block;margin-top:10px;">📥 Descargar PDF</a>` : ""}
+      `;
+    } else {
+      contentDiv.innerHTML = `
+        <h2>Mes no encontrado</h2>
+        <p>Selecciona un mes válido desde la página principal.</p>
+      `;
+    }
+  </script>
 </body>
 </html>
