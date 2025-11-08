@@ -410,3 +410,101 @@ body {
   border-radius: 12px;
   box-shadow: 0 4px 15px rgba(0,0,0,0.5);
 }
+
+/* ========= Cupones ========= */
+.cupon {
+  background: linear-gradient(145deg, #fffdf7, #fff7fb);
+  color: #333;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 700px;
+  margin: 2rem auto;
+  position: relative;
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  font-family: "Poppins", sans-serif;
+  border: 2px dashed #f8c6d0;
+  transition: transform 0.3s ease, opacity 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cupon:hover {
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(255, 102, 143, 0.25);
+}
+
+.cupon.usado {
+  background: #f2f2f2;
+  color: #888;
+  opacity: 0.7;
+  box-shadow: none;
+  border-color: #ddd;
+}
+
+.cupon h3 {
+  font-family: "Great Vibes", cursive;
+  font-size: 1.8rem;
+  color: #d63384;
+  margin-bottom: 0.8rem;
+  letter-spacing: 0.5px;
+  position: relative;
+}
+
+.cupon h3::after {
+  content: " 💗";
+  font-size: 1.2rem;
+}
+
+.cupon p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #444;
+  margin: 0.5rem 0 1.2rem;
+}
+
+.cupon button {
+  margin-top: 1rem;
+  background: linear-gradient(90deg, #ff4d6d, #ff7aa2);
+  border: none;
+  color: #fff;
+  padding: 10px 18px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 10px rgba(255, 77, 109, 0.3);
+}
+
+.cupon button:hover {
+  background: linear-gradient(90deg, #ff1e4d, #ff558a);
+  transform: translateY(-2px);
+}
+
+.cupon button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.cupon .countdown {
+  margin-top: 0.8rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Pequeña animación sutil al aparecer */
+@keyframes fadeInCup {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cupon {
+  animation: fadeInCup 0.6s ease both;
+}
