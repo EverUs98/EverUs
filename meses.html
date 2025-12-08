@@ -66,9 +66,15 @@ Te adoro, te admiro, te quiero, y siempre quiero estar contigo… aunque sea par
       },
       3: {
         title: "💌 3er Mes",
-        text: "Próximamente...",
-        images: [],
-        pdf: ""
+        text: "Mi amor, feliz 3 meses.Tres meses… tres meses de quererte, de reír contigo, de pensar en ti más de lo que pienso en qué voy a cenar (y créeme, eso ya es mucho).Te amo.  Pero no un “te amo” cualquiera; te amo más que a mi enchufe al lado de la cama, y tú sabes que ese enchufe es mi templo, mi salvavidas, mi socio cuando mi cel anda en las últimas.Y aun así… tú ganas sin esforzarte. Para mí eres como mis canciones de Rels B y NSQK:no puedo dejar de quererte, escucharte y sobre todo, entenderte. Tu voz es como esas rolas que no skipeas ni aunque estés triste, cansado o con sueño: siempre entra suave, siempre se siente bien, siempre me arregla el día. Estos 3 meses contigo se sienten como cuando encuentras una playlist perfecta sin buscar: llegan, te sorprenden y de repente ya no quieres otra cosa.   Así contigo: no busqué nada… pero encontré todo.  Me encantas.  Me encantas cuando ríes, cuando te emocionas, cuando me cuentas tus cosas, cuando me hablas bonito… y sí, hasta cuando me regañas poquito.  Eres todo lo que me gusta, pero en persona.  Si tú fueras una app, serías la única que no se traba, la que siempre se abre rápido y que nunca quiero desinstalar.  Si fueras un emoji, serías el corazón blanco porque combina con todo y siempre queda perfecto conmigo.  Gracias por estos tres meses que me han cambiado, por hacerme sentir ese calorcito rico en el pecho, por ser mi risa favorita, mi paz más bonita y mi persona preferida en el mundo.  Y sí, mi amor… te amo.  Te amo más que a mis audífonos, más que a mi cama en domingo, más que a todos mis antojos juntos…  y eso que mis antojos son intensos.      Feliz 3 meses, mi vida.  Y que vengan más meses, más risas y más “te amo” de esos que salen solitos cuando te miro.  Con cariño, humor y todo mi corazón, Tu loco novio que te ama muchisimo ✨❤️‍🔥✨",
+        images: [
+          "images/Fotosueter.jpg"
+        ],
+        pdf: "",
+        song: {
+          src: "audio/309_Nsqk.mp3",
+          title: "NSQK - 309"
+        }
       }
     };
 
@@ -76,14 +82,29 @@ Te adoro, te admiro, te quiero, y siempre quiero estar contigo… aunque sea par
 
     if (mesesData[mes]) {
       const month = mesesData[mes];
-      contentDiv.innerHTML = `
-        <h2>${month.title}</h2>
-        <p>${month.text.replace(/\n/g,"<br>")}</p>
-        <div class="month-images">
-          ${month.images.map(img => `<img src="${img}" alt="Foto del mes" style="width:100%; max-width:400px; margin-bottom:10px;">`).join('')}
-        </div>
-        ${month.pdf ? `<a href="${month.pdf}" download class="btn-month" style="display:inline-block;margin-top:10px;">📥 Descargar PDF</a>` : ""}
+      let html = `
+      <h2>${month.title}</h2>
+      <p>${month.text.replace(/\n/g,"<br>")}</p>
+      <div class="month-images">
+        ${month.images.map(img => `<img src="${img}" alt="Foto del mes" style="width:100%; max-width:400px; margin-bottom:10px;">`).join('')}
+      </div>
+      ${month.pdf ? `<a href="${month.pdf}" download class="btn-month" style="display:inline-block;margin-top:10px;">📥 Descargar PDF</a>` : ""}
       `;
+
+      // ⏯ Reproductor SOLO si el mes tiene canción
+      if (month.song) {
+        html += `
+          <div class="song-player">
+            <h3 style="margin-top:20px;color:#ffd700;">🎵 309 - NSQK</h3>
+            <audio id="audio309" controls style="margin-top:10px;width:100%;max-width:350px;">
+              <source src="audio/309_Nsqk.mp3" type="audio/mp3">
+            </audio>
+          </div>
+        `;
+      }
+
+      contentDiv.innerHTML = html;
+
     } else {
       contentDiv.innerHTML = `
         <h2>Mes no encontrado</h2>
@@ -91,5 +112,33 @@ Te adoro, te admiro, te quiero, y siempre quiero estar contigo… aunque sea par
       `;
     }
   </script>
+
+ <script>
+  // 🔊 Reproducción automática SOLO en el mes 3
+  const urlParams2 = new URLSearchParams(window.location.search);
+  const mes2 = urlParams2.get('mes');
+
+  if (mes2 === "3") {
+
+    // Esperamos a que el contenido dinámico se haya insertado
+    setTimeout(() => {
+      const audio = document.getElementById("audio309");
+      audio.play();
+      if (!audio) return;
+
+      const startSong = () => {
+        audio.play().catch(() => {});
+        document.removeEventListener("click", startSong);
+        document.removeEventListener("touchstart", startSong);
+      };
+
+      // Autoplay requiere interacción del usuario (norma del navegador)
+      document.addEventListener("click", startSong);
+      document.addEventListener("touchstart", startSong);
+    }, 300); // ⏳ 300 ms para que el audio exista en el DOM
+  }
+</script>
+
+
 </body>
 </html>

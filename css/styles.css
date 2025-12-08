@@ -508,3 +508,25 @@ body {
 .cupon {
   animation: fadeInCup 0.6s ease both;
 }
+
+/*Cancion nsqk 3 meses*/
+#lyricsContainer {
+    width: 90%;
+    margin: 20px auto;
+    font-size: 20px;
+    line-height: 1.6;
+    text-align: center;
+    color: #ccc;
+}
+
+.lyric-line {
+    opacity: 0.4;
+    transition: 0.4s;
+}
+
+.active-line {
+    opacity: 1;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 0 0 10px #ffffffc5;
+}
