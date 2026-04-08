@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EverUS</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="stars"></div>
+  <header class="hero" data-bg="images/photo1.jpg">
+    <nav class="nav" id="mainNav">
+      <a href="index.html" class="logo">EverUs ❤️</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#tiempo">Tiempo</a>
+        <a href="#galeria">Galería</a>
+        <a href="#meses">Meses</a>
+        <a href="cupones.html">Cupones 🎁</a>
+      </div>
+    </nav>
+<style>
+
+/* 📱 CONTENEDOR CELULAR */
+.phone {
+  width: 360px;
+  height: 640px;
+  margin: auto;
+  margin-top: 30px;
+  border-radius: 30px;
+  background: #000;
+  box-shadow: 0 0 40px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 🔝 HEADER */
+.chat-header {
+  background: #111;
+  color: white;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #222;
+}
+
+.chat-header img {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.chat-header .name {
+  font-weight: bold;
+}
+
+.chat-header .status {
+  font-size: 12px;
+  color: #aaa;
+}
+
+/* 💬 CHAT */
+.chat-box {
+  flex: 1;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+.msg {
+  max-width: 70%;
+  padding: 10px;
+  margin: 5px;
+  border-radius: 18px;
+  color: white;
+  font-size: 14px;
+  animation: fadeIn 0.3s ease;
+}
+
+.user {
+  background: linear-gradient(45deg,#ff00cc,#3333ff);
+  margin-left: auto;
+}
+
+.bot {
+  background: #262626;
+}
+
+@keyframes fadeIn {
+  from {opacity:0; transform: translateY(10px);}
+  to {opacity:1; transform: translateY(0);}
+}
+
+/* 🔽 INPUT / OPCIONES */
+.chat-input {
+  padding: 10px;
+  border-top: 1px solid #222;
+}
+
+.option-btn {
+  background: #1a1a1a;
+  color: white;
+  border: none;
+  padding: 8px;
+  margin: 4px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.option-btn:hover {
+  background: #333;
+}
+
+/* 📸 GALERÍA */
+.final-img {
+  width: 80%;
+  max-width: 220px;
+  margin: 10px auto;
+  border-radius: 15px;
+  display: block;
+  opacity: 0;
+  transform: scale(0.8);
+  transition: all 0.5s ease;
+}
+
+#galleryFinal {
+  display: none;
+  text-align: center;
+}
+
+</style>
+</head>
+
+<body>
+
+<div id="stars"></div>
+
+<div class="phone">
+
+  <!-- 🔝 HEADER -->
+  <div class="chat-header">
+    <img src="images/Ultima_Foto_Optima.jpg">
+    <div>
+      <div class="name">Mi amor ❤️</div>
+      <div class="status">Activo ahora</div>
+    </div>
+  </div>
+
+  <!-- 💬 CHAT -->
+  <div id="chatBox" class="chat-box"></div>
+
+  <!-- 🔽 OPCIONES -->
+  <div id="options" class="chat-input"></div>
+
+</div>
+
+<!-- 📸 GALERÍA -->
+<div id="galleryFinal">
+  <h3 style="color:white;">📸 Nuestros momentos</h3>
+  <img src="images/Ramo_Flores_Amarillas.jpg" class="final-img">
+  <img src="images/FIesta_Familiar_Mariscos.jpg" class="final-img">
+  <img src="images/Una_futura_Linda_Familia.jpg" class="final-img">
+</div>
+
+<script>
+
+const chat = document.getElementById("chatBox");
+const optionsDiv = document.getElementById("options");
+
+let usedOptions = 0;
+
+// 📝 MENSAJES
+function addMessage(text, type){
+  const msg = document.createElement("div");
+  msg.className = "msg " + type;
+  msg.textContent = text;
+  chat.appendChild(msg);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+// 📌 OPCIONES
+function showOptions(options){
+  optionsDiv.innerHTML = "";
+
+  options.forEach(opt => {
+    const btn = document.createElement("button");
+    btn.className = "option-btn";
+    btn.textContent = opt.text;
+
+    btn.onclick = () => {
+      addMessage(opt.text, "user");
+      optionsDiv.innerHTML = "";
+
+      setTimeout(() => {
+        addMessage(opt.reply, "bot");
+
+        if(opt.final){
+          setTimeout(showFinalMessage, 1500);
+        } else {
+          usedOptions++;
+          setTimeout(nextOptions, 1000);
+        }
+
+      }, 500);
+    };
+
+    optionsDiv.appendChild(btn);
+  });
+}
+
+// 🔄 FLUJO
+function nextOptions(){
+  if(usedOptions === 1){
+    showOptions([
+      {text:"Te amo mucho ❤️", reply:"Yo te amo mucho más, de lo que puedes imaginar, no existe numero para descirbir la cantidad que te amo ni imaginandolo, ni mucho menos existen palabras suficientes para decirte lo mucho que te amo 😘"},
+      {text:"Eres lo mejor que me ha pasado", reply:"Y tú lo mejor que me pudo pasar en esta y en todas mis vidad posibles 💖"}
+    ]);
+  }
+  else if(usedOptions === 2){
+    showOptions([
+      {text:"Oye amor...", reply:"Dime mi vida 🥺", final:true}
+    ]);
+  }
+}
+
+// ❤️ FINAL
+function showFinalMessage(){
+  addMessage("Oye amor... ya son 7 meses preciosa 🥺❤️", "bot");
+  function addImage(src, type){
+  const msg = document.createElement("div");
+  msg.className = "msg " + type;
+
+  const img = document.createElement("img");
+  img.src = src;
+  img.style.width = "100%";
+  img.style.borderRadius = "15px";
+
+  msg.appendChild(img);
+  chat.appendChild(msg);
+  chat.scrollTop = chat.scrollHeight;
+}
+
+  setTimeout(() => {
+    addMessage("Gracias por todo este tiempo juntos, de verdad con cada dia confirmo que mi futuro lo quiero a tu lado... te amo muchísimo 💖", "bot");
+
+    // 📸 IMÁGENES DENTRO DEL CHAT
+    setTimeout(() => {
+      addImage("images/Ultima_Foto_Optima.jpg", "bot");
+    }, 1000);
+
+    setTimeout(() => {
+      addImage("images/Ramo_Flores_Amarillas.jpg", "bot");
+    }, 2000);
+
+    setTimeout(() => {
+      addImage("images/FIesta_Familiar_Mariscos.jpg", "bot");
+    }, 3000);
+
+  }, 1500);
+}
+
+// 📸 GALERÍA
+function showGallery(){
+  const gallery = document.getElementById("galleryFinal");
+  const images = document.querySelectorAll(".final-img");
+
+  gallery.style.display = "block";
+
+  images.forEach((img, i) => {
+    setTimeout(() => {
+      img.style.opacity = "1";
+      img.style.transform = "scale(1)";
+    }, i * 500);
+  });
+}
+
+// 🚀 INICIO
+showOptions([
+  {text:"Hola amor 💖", reply:"Hola mi vida 😍"}
+]);
+
+</script>
+
+</body>
+</html>

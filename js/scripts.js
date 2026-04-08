@@ -115,3 +115,4 @@ function moveStars(){stars.forEach(s=>{s.y+=s.d;if(s.y>h){s.y=0;s.x=Math.random(
 function animateStars(){drawStars();requestAnimationFrame(animateStars);}
 animateStars();
 
+

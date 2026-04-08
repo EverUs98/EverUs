@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
+  
 <div id="stars"></div>
 
   <!-- Navbar fijo -->
@@ -105,7 +106,31 @@ Te adoro, te admiro, te quiero, y siempre quiero estar contigo… aunque sea par
         ],
       },
 
+      6: {
+        title: "💌 6to Mes",
+        text: "Hoy celebramos seis meses y aunque para muchos pueda parecer poco tiempo, para mí ha significado una eternidad llena de momentos que guardo en el corazón, porque desde que llegaste a mi vida muchas cosas cambiaron y empecé a ver el mundo de una forma distinta, contigo entendí que el amor también es elegir quedarse, aprender del otro y seguir avanzando juntos incluso cuando no todo es perfecto, y aun así cada día que pasa me convenzo más de algo: siempre te elegiría a ti, una y otra vez, porque te has convertido en mi paz, en mi refugio y en la persona que ilumina mis días, admiro profundamente la persona que eres, tu fuerza, tu corazón y todo lo que estás logrando, y quiero que nunca olvides que siempre tendrás a alguien de tu lado, alguien que estará a un mensaje o a una llamada de distancia sin importar la hora o el momento, porque si algo tengo claro después de estos seis meses es que mi lugar favorito en el mundo es a tu lado y que mi corazón, sin duda alguna, te eligió a ti. ❤️",
+        images: [
+          "images/Ultima_Foto_Optima.jpg",
+          "images/Salida_Grutas.jpg"
+        ],
+      },
 
+       7: {
+  title: "💌 7mo Mes",
+  text: `
+    INGRESA LA CONTRASEÑA<br><br>
+    pista: es un apodó que solo tu usas para mi
+    *primera letra en mayuscula*
+
+    <input type="password" id="passwordInput" placeholder="Contraseña"><br><br>
+
+    <button onclick="checkPassword()">Desbloquear</button>
+
+    <p id="errorMsg" style="color:red;"></p>
+  `,
+  images: [],
+}
+    
     };
 
     const contentDiv = document.getElementById('month-content');
@@ -143,6 +168,7 @@ Te adoro, te admiro, te quiero, y siempre quiero estar contigo… aunque sea par
     }
   </script>
 
+
  <script>
   // 🔊 Reproducción automática SOLO en el mes 3
   const urlParams2 = new URLSearchParams(window.location.search);
@@ -169,6 +195,17 @@ Te adoro, te admiro, te quiero, y siempre quiero estar contigo… aunque sea par
   }
 </script>
 
+<script>
+function checkPassword() {
+  const password = document.getElementById("passwordInput").value;
+
+  if (password === "Mochi") {
+    window.location.href = "rompecabezas.html";
+  } else {
+    document.getElementById("errorMsg").textContent = "Contraseña incorrecta";
+  }
+}
+</script>
 
 </body>
 </html>

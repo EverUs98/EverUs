@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>EverUS</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+  <div id="stars"></div>
+  <header class="hero" data-bg="images/photo1.jpg">
+    <nav class="nav" id="mainNav">
+      <a href="index.html" class="logo">EverUs ❤️</a>
+      <div class="nav-links" id="navLinks">
+        <a href="#tiempo">Tiempo</a>
+        <a href="#galeria">Galería</a>
+        <a href="#meses">Meses</a>
+        <a href="cupones.html">Cupones 🎁</a>
+      </div>
+    </nav>
+
+
+     <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="close">✕</button>
+      <img id="modal-img" src="" alt="Foto" />
+      <div class="meta">
+        <h3 id="meta-place"></h3>
+        <p id="meta-date"></p>
+        <p id="meta-note"></p>
+      </div>
+    </div>
+  </div>
+
+<div style="text-align:center; margin-top:40px;">
+  <h2>🧩 Arma nuestra foto 💖</h2>
+
+  <!-- CONTENEDOR PRINCIPAL -->
+  <div style="display:flex; justify-content:center; gap:30px; flex-wrap:wrap; margin-top:20px;">
+
+    <!-- TABLERO (VACÍO) -->
+    <div id="board" style="
+  display:grid;
+  grid-template-columns: repeat(4, 90px);
+  grid-template-rows: repeat(4, 90px);
+  gap:1px;
+  background:#ffffff;
+  padding:2px;
+  border-radius:10px;
+"></div>
+
+    <!-- PIEZAS -->
+    <div id="pieces" style="
+      display:grid;
+      grid-template-columns: repeat(4, 70px);
+      gap:4px;
+    "></div>
+
+  </div>
+
+  <!-- BOTÓN FINAL -->
+  <button id="finalBtn" style="
+    display:none;
+    margin-top:30px;
+    padding:10px 20px;
+    border:none;
+    border-radius:10px;
+    background:#ff4d6d;
+    color:white;
+    cursor:pointer;
+  ">
+    Iniciar chat 💖
+  </button>
+</div>
+
+  <script src="js/scripts.js"></script>
+
+<script>
+const board = document.getElementById("board");
+const piecesContainer = document.getElementById("pieces");
+const finalBtn = document.getElementById("finalBtn");
+
+const size = 4;
+const image = "images/Ramo_Flores_Amarillas.jpg"; // tu imagen
+
+let dragged = null;
+
+// 🔲 CREAR CASILLAS (más grandes)
+for(let i = 0; i < size * size; i++){
+  const cell = document.createElement("div");
+  cell.dataset.index = i;
+
+  cell.style.width = "90px";
+  cell.style.height = "90px";
+  cell.style.background = "#1a1a1a";
+  cell.style.borderRadius = "8px";
+
+  cell.ondragover = e => e.preventDefault();
+
+  cell.ondrop = () => {
+    if(!dragged) return;
+
+    const existingPiece = cell.firstChild;
+
+    // 🔥 SI YA HAY PIEZA → INTERCAMBIO
+    if(existingPiece){
+      dragged.parentElement.appendChild(existingPiece);
+    }
+
+    cell.innerHTML = "";
+    cell.appendChild(dragged);
+
+    checkWin();
+  };
+
+  board.appendChild(cell);
+}
+
+// 🧩 CREAR PIEZAS
+let pieces = [];
+
+for(let i = 0; i < size * size; i++){
+  const piece = document.createElement("div");
+
+  piece.draggable = true;
+  piece.dataset.index = i;
+
+  piece.style.width = "90px";
+  piece.style.height = "90px";
+  piece.style.backgroundImage = `url(${image})`;
+  piece.style.backgroundSize = "360px 360px";
+
+  const x = (i % size) * 90;
+  const y = Math.floor(i / size) * 90;
+
+  piece.style.backgroundPosition = `-${x}px -${y}px`;
+  piece.style.borderRadius = "8px";
+  piece.style.cursor = "grab";
+
+  piece.ondragstart = () => dragged = piece;
+
+  pieces.push(piece);
+}
+
+// 🔀 MEZCLAR
+pieces.sort(() => Math.random() - 0.5);
+
+// MOSTRAR
+pieces.forEach(p => piecesContainer.appendChild(p));
+
+// 🔁 PERMITIR REGRESAR AL CONTENEDOR
+piecesContainer.ondragover = e => e.preventDefault();
+
+piecesContainer.ondrop = () => {
+  if(!dragged) return;
+
+  piecesContainer.appendChild(dragged);
+};
+
+// 🏆 VERIFICAR
+function checkWin(){
+  let correct = 0;
+
+  const cells = board.children;
+
+  for(let i = 0; i < cells.length; i++){
+    const piece = cells[i].firstChild;
+
+    if(piece && piece.dataset.index == i){
+      correct++;
+    }
+  }
+
+  if(correct === size * size){
+    finalBtn.style.display = "inline-block";
+  }
+}
+
+finalBtn.onclick = () => {
+  window.location.href = "7meses.html";
+};
+</script>
+
+</body>
+</html>
