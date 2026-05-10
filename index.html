@@ -10,6 +10,41 @@
   <div id="stars"></div>
   <header class="hero" data-bg="images/photo1.jpg">
     <nav class="nav" id="mainNav">
+
+      <!-- 🔔 NOVEDADES -->
+<div class="news-wrapper">
+
+  <button id="toggle-news" class="news-toggle">
+    🔔 Novedades (<span id="news-count">0</span>)
+  </button>
+
+  <div id="news-panel" class="news-panel hidden-news">
+
+    <div class="news-section">
+
+      <button class="news-section-btn" id="toggle-active">
+        ✨ Novedades
+      </button>
+
+      <div id="news-container" class="news-content"></div>
+
+    </div>
+
+
+    <div class="news-section">
+
+      <button class="news-section-btn" id="toggle-old">
+        📜 Novedades Pasadas
+      </button>
+
+      <div id="old-news-container" class="news-content"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
       <a href="index.html" class="logo">EverUs ❤️</a>
       <div class="nav-links" id="navLinks">
         <a href="#tiempo">Tiempo</a>
@@ -263,6 +298,27 @@
             <figcaption>Algun dia... - ? de ? de 20?</figcaption>
           </figure>
 
+          <figure class="gallery-item" data-src="images/Parque_Japones.jpg" data-place="Mucha caminata, poco parque" data-date="2026-04-16" data-note="Sin pies y cansados, pero juntos y felices">
+            <img src="images/Parque_Japones.jpg" alt="foto 42" />
+            <figcaption>Mucha caminata, poco parque - 16 de Abril de 2026</figcaption>
+          </figure>
+
+          <figure class="gallery-item" data-src="images/Salida_Bosque_Aragon.jpg" data-place="¿Mas caminata?, pero con zoo incluido" data-date="2026-04-26" data-note="Todo lindo y asi... pero y MI LEOON????">
+            <img src="images/Salida_Bosque_Aragon.jpg" alt="foto 43" />
+            <figcaption>¿Mas caminata?, pero con zoo incluido - 26 de Abril de 2026</figcaption>
+          </figure>
+
+          <figure class="gallery-item" data-src="images/ACAYORK.jpg" data-place="Nada tan lindo como el pasar un finde contigo en ACAYORK" data-date="2026-05-01" data-note="La playita y tu y yo juntos... Que mas puedo pedir">
+            <img src="images/ACAYORK.jpg" alt="foto 43" />
+            <figcaption>Nada tan lindo como el pasar un finde contigo en ACAYORK - 01 de Mayo de 2026</figcaption>
+          </figure>
+
+          <figure class="gallery-item" data-src="images/Salida_Barrio_Chino.jpg" data-place="Sin ramen, sin banderillas, pero juntos" data-date="2026-05-08" data-note="Contigo desde lo mas lujoso, hasta lo mas de barrio, pero juntos">
+            <img src="images/Salida_Barrio_Chino.jpg" alt="foto 44" />
+            <figcaption>Sin ramen, sin banderillas, pero juntos - 08 de Mayo de 2026</figcaption>
+          </figure>
+
+
         </div>
       </div>
     </section>
@@ -280,6 +336,7 @@
           <a href="meses.html?mes=5" class="btn-month">💌 5to Mes</a>
           <a href="meses.html?mes=6" class="btn-month">💌 6to Mes</a>
           <a href="meses.html?mes=7" class="btn-month">💌 7mo Mes</a>
+          <a href="meses.html?mes=8" class="btn-month">💌 8vo Mes</a>
         </div>
       </div>
     </section>
@@ -304,6 +361,6 @@
     </div>
   </div>
 
-  <script src="js/scripts.js"></script>
+  <script defer src="js/scripts.js"></script>
 </body>
 </html>

@@ -533,4 +533,258 @@ body {
 
 
 
+/* ========================================= */
+/* 🔔 SISTEMA NOVEDADES */
+/* ========================================= */
+
+.news-wrapper{
+  position: fixed;
+
+  top: 90px;
+  right: 20px;
+
+  z-index: 99999;
+}
+
+/* BOTÓN PRINCIPAL */
+
+.news-toggle{
+  background: rgba(0,0,0,0.75);
+
+  color: white;
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  padding: 12px 18px;
+
+  border-radius: 15px;
+
+  cursor: pointer;
+
+  backdrop-filter: blur(10px);
+
+  transition: 0.3s;
+
+  font-weight: bold;
+}
+
+.news-toggle:hover{
+  transform: scale(1.05);
+
+  background: rgba(255,255,255,0.1);
+}
+
+
+/* PANEL */
+
+.news-panel{
+  margin-top: 10px;
+
+  width: 300px;
+
+  background: rgba(10,10,10,0.9);
+
+  border-radius: 20px;
+
+  padding: 15px;
+
+  backdrop-filter: blur(10px);
+
+  border: 1px solid rgba(255,255,255,0.1);
+
+  animation: fadeNews 0.3s ease;
+}
+
+.hidden-news{
+  display: none;
+}
+
+@keyframes fadeNews{
+  from{
+    opacity:0;
+    transform: translateY(-10px);
+  }
+
+  to{
+    opacity:1;
+    transform: translateY(0px);
+  }
+}
+
+
+/* SECCIONES */
+
+.news-section{
+  margin-bottom: 15px;
+}
+
+.news-section-btn{
+  width: 100%;
+
+  background: rgba(255,255,255,0.08);
+
+  border: none;
+
+  color: white;
+
+  padding: 10px;
+
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  font-weight: bold;
+
+  transition: 0.3s;
+}
+
+.news-section-btn:hover{
+  background: rgba(255,255,255,0.15);
+}
+
+
+/* CONTENIDO */
+
+.news-content{
+  display: none;
+
+  margin-top: 10px;
+}
+
+.news-content.active{
+  display: block;
+}
+
+
+/* ITEMS */
+
+.news-item{
+  background: rgba(255,255,255,0.07);
+
+  padding: 12px;
+
+  border-radius: 12px;
+
+  margin-bottom: 10px;
+
+  transition: 0.3s;
+}
+
+.news-item:hover{
+  transform: scale(1.03);
+
+  background: rgba(255,255,255,0.13);
+}
+
+.news-item a{
+  color: white;
+
+  text-decoration: none;
+
+  font-weight: bold;
+}
+
+.news-date{
+  margin-top: 5px;
+
+  font-size: 12px;
+
+  opacity: 0.7;
+}
+
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+  .news-wrapper{
+    right: 10px;
+    left: 10px;
+  }
+
+  .news-panel{
+    width: auto;
+  }
+
+}
+
+/* ========================================= */
+/* 🔔 SISTEMA NOVEDADES */
+/* ========================================= */
+
+.news-wrapper{
+  position: fixed;
+  top: 90px;
+  right: 20px;
+  z-index: 99999;
+}
+
+.news-toggle{
+  background: rgba(0,0,0,0.75);
+  color: white;
+  border: 1px solid rgba(255,255,255,0.1);
+  padding: 12px 18px;
+  border-radius: 15px;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  font-weight: bold;
+}
+
+.news-panel{
+  margin-top: 10px;
+  width: 300px;
+  background: rgba(10,10,10,0.9);
+  border-radius: 20px;
+  padding: 15px;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.hidden-news{
+  display: none;
+}
+
+.news-section{
+  margin-bottom: 15px;
+}
+
+.news-section-btn{
+  width: 100%;
+  background: rgba(255,255,255,0.08);
+  border: none;
+  color: white;
+  padding: 10px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.news-content{
+  display: none;
+  margin-top: 10px;
+}
+
+.news-content.active{
+  display: block;
+}
+
+.news-item{
+  background: rgba(255,255,255,0.07);
+  padding: 12px;
+  border-radius: 12px;
+  margin-bottom: 10px;
+}
+
+.news-item a{
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.news-date{
+  margin-top: 5px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+
 
