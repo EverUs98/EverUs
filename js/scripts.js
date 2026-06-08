@@ -302,15 +302,15 @@ animateStars();
 const novedades = [
 
   {
-    id: 8,
-    titulo: "💖 Felices 8 Meses",
-    link: "meses.html?mes=8",
+    id: 9,
+    titulo: "💖 Felices 9 Meses",
+    link: "meses.html?mes=9",
 
     // CAMBIA ESTA FECHA
     // AÑO, MES-1, DÍA
 
     fecha:
-    new Date(2026, 4, 11).getTime()
+    new Date(2026, 6, 9).getTime()
   }
 
 ];
